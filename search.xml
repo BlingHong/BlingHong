@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2018/07/05/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>###新建页面</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page --path schedule/index &quot;schedule&quot;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>this指向</title>
     <url>/2021/07/06/this%E6%8C%87%E5%90%91/</url>
     <content><![CDATA[<p>面向对象语言中 this 表示当前对象的一个引用。</p>
@@ -106,9 +126,28 @@
 <h4 id="局部作用域"><a href="#局部作用域" class="headerlink" title="局部作用域"></a>局部作用域</h4><ol>
 <li>在函数内部就是局部作用域，这个代码的名字只在函数的内部起作用</li>
 <li>调用函数时创建函数作用域，函数执行完毕之后，函数作用域销毁；</li>
-<li>每调用一次函数就会创建一个新的函数作用域，它们之间是相互独立的。<h3 id="作用域的目的"><a href="#作用域的目的" class="headerlink" title="作用域的目的"></a>作用域的目的</h3>是为了提高程序的可靠性，更重要的是减少命名冲突<h3 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h3>在js中，根据作用域的不同，变量可以分为两种：<strong>全局变量</strong>和<strong>局部变量</strong><h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4></li>
+<li>每调用一次函数就会创建一个新的函数作用域，它们之间是相互独立的。</li>
 </ol>
-<ul>
+<h3 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h3><p>在ES6中新增加了一个作用域就是会计作用域，通过let和const声明。那块级作用域什么情况下被创建内？答案如下</p>
+<p>在一个函数内部</p>
+<p>在一个代码块内部（{}包裹的代码块）</p>
+<p>let声明的愈发与var的语法一致，基本上可以用let代替var,但会讲变量的作用域限制在当前代码块中。</p>
+<p>块级作用域的特点：</p>
+<p>声明变量不会提升到代码块顶部</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Scope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(scope) <span class="comment">// Uncaught ReferenceError: value is not defined</span></span><br><span class="line"><span class="keyword">let</span> scope = <span class="string">&quot;块级&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(scope) <span class="comment">// 块级</span></span><br><span class="line">&#125;</span><br><span class="line">Scope()</span><br></pre></td></tr></table></figure>
+
+<p>禁止重复声明</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Scope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">let</span> scope = <span class="string">&#x27;a&#x27;</span></span><br><span class="line"> <span class="comment">//let scope = &#x27;b&#x27; // Uncaught SyntaxError: Identifier &#x27;scope&#x27; has already been declared</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>小技巧：在循环中可以用let const声明变量</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt; <span class="number">100</span>; i++)&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i) <span class="comment">// Uncaught ReferenceError: i is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt; <span class="number">100</span>; i++)&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i) <span class="comment">// 100</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="作用域的目的"><a href="#作用域的目的" class="headerlink" title="作用域的目的"></a>作用域的目的</h3><p>是为了提高程序的可靠性，更重要的是减少命名冲突</p>
+<h3 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h3><p>在js中，根据作用域的不同，变量可以分为两种：<strong>全局变量</strong>和<strong>局部变量</strong></p>
+<h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4><ul>
 <li>在全局作用域下声明的变量叫做全局变量</li>
 <li>全局变量在全局任何位置都可以使用，全局作用域中无法访问到局部作用域中的变量<h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4></li>
 <li>在局部作用域下声明的变量叫做局部变量</li>
@@ -123,26 +162,6 @@
       <tags>
         <tag>object</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2018/07/05/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<p>###新建页面</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page --path schedule/index &quot;schedule&quot;</span><br></pre></td></tr></table></figure>
-]]></content>
   </entry>
   <entry>
     <title>创建对象方式</title>
