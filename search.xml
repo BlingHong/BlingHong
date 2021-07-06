@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2018/07/05/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<p>###新建页面</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page --path schedule/index &quot;schedule&quot;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>this指向</title>
     <url>/2021/07/06/this%E6%8C%87%E5%90%91/</url>
     <content><![CDATA[<p>面向对象语言中 this 表示当前对象的一个引用。</p>
@@ -43,32 +23,29 @@
 <ul>
 <li>类似 call() 和 apply() 方法可以将 this 引用到任何对象。</li>
 </ul>
-<p>##方法中的this</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">firstName</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  <span class="attr">lastName</span> : <span class="string">&quot;Doe&quot;</span>,</span><br><span class="line">  <span class="attr">fullName</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.lastName;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">person.fullName() <span class="comment">// John Doe</span></span><br></pre></td></tr></table></figure>
+<h2 id="方法中的this"><a href="#方法中的this" class="headerlink" title="方法中的this"></a>方法中的this</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">firstName</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  <span class="attr">lastName</span> : <span class="string">&quot;Doe&quot;</span>,</span><br><span class="line">  <span class="attr">fullName</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.lastName;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">person.fullName() <span class="comment">// John Doe</span></span><br></pre></td></tr></table></figure>
 <p>在对象方法中， this 指向调用它所在方法的对象。</p>
 <p>在上面一个实例中，this 表示 person 对象。</p>
 <p>fullName 方法所属的对象就是 person。</p>
-<p>##单独使用 this</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="built_in">this</span> <span class="comment">// [object Window]</span></span><br></pre></td></tr></table></figure>
+<h2 id="单独使用-this"><a href="#单独使用-this" class="headerlink" title="单独使用 this"></a>单独使用 this</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="built_in">this</span> <span class="comment">// [object Window]</span></span><br></pre></td></tr></table></figure>
 <p>单独使用 this，则它指向全局(Global)对象。</p>
 <p>在浏览器中，window 就是该全局对象为 [object Window]:</p>
 <p>ps: 严格模式下，如果单独使用，this 也是指向全局(Global)对象。</p>
-<p>##函数中使用 this（默认）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>; <span class="comment">// [object Window]</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="函数中使用-this（默认）"><a href="#函数中使用-this（默认）" class="headerlink" title="函数中使用 this（默认）"></a>函数中使用 this（默认）</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>; <span class="comment">// [object Window]</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>在函数中，函数的所属者默认绑定到 this 上。</p>
 <p>在浏览器中，window 就是该全局对象为 [object Window]:</p>
 <p>ps: 严格模式下，函数是没有绑定到this下，this是undefined</p>
-<p>##事件中的 this<br>在 HTML 事件句柄中，this 指向了接收事件的 HTML 元素：</p>
+<h2 id="事件中的-this"><a href="#事件中的-this" class="headerlink" title="事件中的 this"></a>事件中的 this</h2><p>在 HTML 事件句柄中，this 指向了接收事件的 HTML 元素：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;button onclick=<span class="string">&quot;this =&gt; buttonHtml对象&quot;</span>&gt;</span><br><span class="line">点我</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>##对象方法中绑定<br>下面实例中，this 是 person 对象，person 对象是函数的所有者：</p>
+<h2 id="对象方法中绑定"><a href="#对象方法中绑定" class="headerlink" title="对象方法中绑定"></a>对象方法中绑定</h2><p>下面实例中，this 是 person 对象，person 对象是函数的所有者：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  <span class="attr">firstName</span>  : <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  <span class="attr">lastName</span>   : <span class="string">&quot;Doe&quot;</span>,</span><br><span class="line">  <span class="attr">id</span>         : <span class="number">5566</span>,</span><br><span class="line">  <span class="attr">myFunction</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">person.myFunction() <span class="comment">// [object Object]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>##显式函数绑定<br>在 JavaScript 中函数也是对象，对象则有方法，apply 和 call 就是函数对象的方法。</p>
+<h2 id="显式函数绑定"><a href="#显式函数绑定" class="headerlink" title="显式函数绑定"></a>显式函数绑定</h2><p>在 JavaScript 中函数也是对象，对象则有方法，apply 和 call 就是函数对象的方法。</p>
 <p>这两个方法异常强大，他们允许切换函数执行的上下文环境（context），即 this 绑定的对象。<br>在下面实例中，当我们使用 person2 作为参数来调用 person1.fullName 方法时, this 将指向 person2, 即便它是 person1 的方法：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> person1 = &#123;</span><br><span class="line">  <span class="attr">fullName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.firstName + <span class="string">&quot; &quot;</span> + <span class="built_in">this</span>.lastName;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person2 = &#123;</span><br><span class="line">  <span class="attr">firstName</span>:<span class="string">&quot;John&quot;</span>,</span><br><span class="line">  <span class="attr">lastName</span>: <span class="string">&quot;Doe&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line">person1.fullName.call(person2);  <span class="comment">// 返回 &quot;John Doe&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>##隐式绑定<br>什么是隐式绑定呢，如果函数调用时，前面存在调用它的对象，那么this就会隐式绑定到这个对象上。</p>
+<h2 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h2><p>什么是隐式绑定呢，如果函数调用时，前面存在调用它的对象，那么this就会隐式绑定到这个对象上。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;听风是风&#x27;</span>,</span><br><span class="line">    <span class="attr">func</span>: fn</span><br><span class="line">&#125;;</span><br><span class="line">obj.func() <span class="comment">//听风是风</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>如果函数调用前存在多个对象，this指向距离调用自己最近的对象。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;行星飞行&#x27;</span>,</span><br><span class="line">    <span class="attr">func</span>: fn,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;听风是风&#x27;</span>,</span><br><span class="line">    <span class="attr">o</span>: obj</span><br><span class="line">&#125;;</span><br><span class="line">obj1.o.func() <span class="comment">//行星飞行</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -78,7 +55,7 @@
 <p>既然说到原型链，那我们再来点花哨的，我们再改写例子，看看下面输出多少：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">Fn.prototype.name = <span class="string">&#x27;时间跳跃&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> Fn();</span><br><span class="line">obj.func = fn;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;听风是风&#x27;</span>,</span><br><span class="line">    <span class="attr">o</span>: obj</span><br><span class="line">&#125;;</span><br><span class="line">obj1.o.func() <span class="comment">//时间跳跃</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>这里输出时间跳跃，虽然obj对象并没有name属性，但顺着原型链，找到了产生自己的构造函数Fn，由于Fn原型链存在name属性，所以输出时间跳跃了。</p>
-<p>##隐式丢失<br>在特定情况下会存在隐式绑定丢失的问题，最常见的就是作为参数传递以及变量赋值，先看参数传递：</p>
+<h2 id="隐式丢失"><a href="#隐式丢失" class="headerlink" title="隐式丢失"></a>隐式丢失</h2><p>在特定情况下会存在隐式绑定丢失的问题，最常见的就是作为参数传递以及变量赋值，先看参数传递：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;行星飞行&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;听风是风&#x27;</span>,</span><br><span class="line">    <span class="attr">fn</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">param</span>) </span>&#123;</span><br><span class="line">    param();</span><br><span class="line">&#125;;</span><br><span class="line">fn1(obj.fn);<span class="comment">//行星飞行</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>这个例子中我们将 obj.fn 也就是一个函数传递进 fn1 中执行，这里只是单纯传递了一个函数而已，this并没有跟函数绑在一起，所以this丢失这里指向了window。</p>
@@ -87,7 +64,7 @@
 <p>注意，隐式绑定丢失并不是都会指向全局对象，比如下面的例子：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&#x27;行星飞行&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;听风是风&#x27;</span>,</span><br><span class="line">    <span class="attr">fn</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;时间跳跃&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">obj1.fn = obj.fn;</span><br><span class="line">obj1.fn(); <span class="comment">//时间跳跃</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>虽然丢失了 obj 的隐式绑定，但是在赋值的过程中，又建立了新的隐式绑定，这里this就指向了对象 obj1。</p>
-<p>##new绑定<br>准确来说，js中的构造函数只是使用new 调用的普通函数，它并不是一个类，最终返回的对象也不是一个实例，只是为了便于理解习惯这么说罢了。</p>
+<h2 id="new绑定"><a href="#new绑定" class="headerlink" title="new绑定"></a>new绑定</h2><p>准确来说，js中的构造函数只是使用new 调用的普通函数，它并不是一个类，最终返回的对象也不是一个实例，只是为了便于理解习惯这么说罢了。</p>
 <p>那么new一个函数究竟发生了什么呢，大致分为三步：</p>
 <ul>
 <li>以构造器的prototype属性为原型，创建新对象；</li>
@@ -97,7 +74,7 @@
 <p>这个过程我们称之为构造调用，我们来看个例子：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&#x27;听风是风&#x27;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> echo = <span class="keyword">new</span> Fn();</span><br><span class="line">echo.name<span class="comment">//听风是风</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>在上方代码中，构造调用创建了一个新对象echo，而在函数体内，this将指向新对象echo上（可以抽象理解为新对象就是this）。</p>
-<p>##this绑定优先级<br>显式绑定 &gt; 隐式绑定 &gt; 默认绑定</p>
+<h2 id="this绑定优先级"><a href="#this绑定优先级" class="headerlink" title="this绑定优先级"></a>this绑定优先级</h2><p>显式绑定 &gt; 隐式绑定 &gt; 默认绑定</p>
 <p>new绑定 &gt; 隐式绑定 &gt; 默认绑定</p>
 <p>为什么显式绑定不和new绑定比较呢？因为不存在这种绑定同时生效的情景，如果同时写这两种代码会直接抛错，所以大家只用记住上面的规律即可。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&#x27;听风是风&#x27;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;行星飞行&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> echo = <span class="keyword">new</span> Fn().call(obj);<span class="comment">//报错 call is not a function</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -106,8 +83,7 @@
 <p>其次是new绑定大于隐式：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//new&gt;隐式</span></span><br><span class="line">obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;时间跳跃&#x27;</span>,</span><br><span class="line">    <span class="attr">fn</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = <span class="string">&#x27;听风是风&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> echo = <span class="keyword">new</span> obj.fn();</span><br><span class="line">echo.name;<span class="comment">//听风是风</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>##箭头函数的this</p>
-<p>ES6的箭头函数是另类的存在，为什么要单独说呢，这是因为箭头函数中的this不适用上面介绍的四种绑定规则。</p>
+<h2 id="箭头函数的this"><a href="#箭头函数的this" class="headerlink" title="箭头函数的this"></a>箭头函数的this</h2><p>ES6的箭头函数是另类的存在，为什么要单独说呢，这是因为箭头函数中的this不适用上面介绍的四种绑定规则。</p>
 <p>准确来说，箭头函数中没有this，箭头函数的this指向取决于外层作用域中的this，外层作用域或函数的this指向谁，箭头函数中的this便指向谁。有点吃软饭的嫌疑，一点都不硬朗，我们来看个例子：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;听风是风&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;时间跳跃&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> bar = fn.call(obj1); <span class="comment">// fn this指向obj1</span></span><br><span class="line">bar.call(obj2); <span class="comment">//听风是风</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>为啥我们第一次绑定this并返回箭头函数后，再次改变this指向没生效呢？</p>
@@ -115,6 +91,87 @@
 <p>当然，箭头函数的this也不是真的无法修改，我们知道箭头函数的this就像作用域继承一样从上层作用域找，因此我们可以修改外层函数this指向达到间接修改箭头函数this的目的。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">this</span>.name);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;听风是风&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;时间跳跃&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line">fn.call(obj1)(); <span class="comment">// fn this指向obj1,箭头函数this也指向obj1</span></span><br><span class="line">fn.call(obj2)(); <span class="comment">//fn this 指向obj2,箭头函数this也指向obj2</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
+  </entry>
+  <entry>
+    <title>作用域</title>
+    <url>/2018/07/06/%E4%BD%9C%E7%94%A8%E5%9F%9F/</url>
+    <content><![CDATA[<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><h3 id="什么是作用域？"><a href="#什么是作用域？" class="headerlink" title="什么是作用域？"></a>什么是作用域？</h3><p>作用域为可访问变量，对象，函数的集合。</p>
+<p>作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。</p>
+<p>在js中，变量的作用域分为全局作用域和局部作用域两种。<br>一个变量是全局作用域还是局部作用域，主要看变量声明的位置。</p>
+<h4 id="全局作用域："><a href="#全局作用域：" class="headerlink" title="全局作用域："></a>全局作用域：</h4><ol>
+<li>最外层函数和在最外层函数外面定义的变量</li>
+<li>没有通过关键字”var”声明的变量</li>
+<li>浏览器中，window对象的属性</li>
+</ol>
+<h4 id="局部作用域"><a href="#局部作用域" class="headerlink" title="局部作用域"></a>局部作用域</h4><ol>
+<li>在函数内部就是局部作用域，这个代码的名字只在函数的内部起作用</li>
+<li>调用函数时创建函数作用域，函数执行完毕之后，函数作用域销毁；</li>
+<li>每调用一次函数就会创建一个新的函数作用域，它们之间是相互独立的。<h3 id="作用域的目的"><a href="#作用域的目的" class="headerlink" title="作用域的目的"></a>作用域的目的</h3>是为了提高程序的可靠性，更重要的是减少命名冲突<h3 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h3>在js中，根据作用域的不同，变量可以分为两种：<strong>全局变量</strong>和<strong>局部变量</strong><h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4></li>
+</ol>
+<ul>
+<li>在全局作用域下声明的变量叫做全局变量</li>
+<li>全局变量在全局任何位置都可以使用，全局作用域中无法访问到局部作用域中的变量<h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4></li>
+<li>在局部作用域下声明的变量叫做局部变量</li>
+<li>局部变量只能在函数内部使用，在局部作用域中可以访问到全局变量</li>
+</ul>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>在js代码运行中，所有用到的变量都需要去当前上下文环境中查找，当找不到的时候，就会继续查找上层的环境变量。<br>这样一级一级向上查找的过程，就组合成了一个作用域链。</p>
+<p>所以说，<strong>作用域链</strong>与一个<strong>执行上下文</strong>相关，是内部上下文所有变量对象（包含父变量对象）的列表，用于变量查询。</p>
+]]></content>
+      <categories>
+        <category>js基础</category>
+      </categories>
+      <tags>
+        <tag>object</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2018/07/05/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>###新建页面</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page --path schedule/index &quot;schedule&quot;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>创建对象方式</title>
+    <url>/2018/07/06/%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>在 JavaScript 中创建对象的可行方法有哪些？</p>
+<h2 id="1、对象的构造函数"><a href="#1、对象的构造函数" class="headerlink" title="1、对象的构造函数"></a>1、对象的构造函数</h2><p>创建空对象的最简单方法是使用object构造函数，目前不推荐这种方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> object() <span class="comment">// 对象构造函数</span></span><br></pre></td></tr></table></figure>
+<h2 id="2、对象的创建方法："><a href="#2、对象的创建方法：" class="headerlink" title="2、对象的创建方法："></a>2、对象的创建方法：</h2><p>Object的create方法通过将原型对象作为参数传递来创建一个新对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = <span class="built_in">Object</span>.create(<span class="literal">null</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="3、对象字面量语法"><a href="#3、对象字面量语法" class="headerlink" title="3、对象字面量语法"></a>3、对象字面量语法</h2><p>当传递null作为参数时，对象字面量语法等效于create方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4、函数构造器"><a href="#4、函数构造器" class="headerlink" title="4、函数构造器"></a>4、函数构造器</h2><p>创建任何函数并应用new运算符来创建对象实例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line">    obj.name = name</span><br><span class="line">    <span class="keyword">return</span> obj</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> obj1 = <span class="keyword">new</span> Person(<span class="string">&quot;哈哈&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、带有原型的函数构造函数"><a href="#5、带有原型的函数构造函数" class="headerlink" title="5、带有原型的函数构造函数"></a>5、带有原型的函数构造函数</h2><p>这类似于函数构造函数，但它使用原型作为其属性和方法</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype.name = <span class="string">&quot;哈哈&quot;</span></span><br><span class="line"><span class="keyword">var</span> obj = New Person()</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、es6类语法"><a href="#6、es6类语法" class="headerlink" title="6、es6类语法"></a>6、es6类语法</h2><p>es6引入类特性来创建对象</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">construtor</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> object = <span class="keyword">new</span> Person(<span class="string">&quot;哈哈&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="7、单例模式"><a href="#7、单例模式" class="headerlink" title="7、单例模式"></a>7、单例模式</h2><p>Singleton是一个只能实例化一次的对象。对其构造函数的重复调用返回相同的实例，这样可以确保它们不会意外创建多个实例</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&quot;哈哈&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>js基础</category>
+      </categories>
+      <tags>
+        <tag>object</tag>
+      </tags>
   </entry>
   <entry>
     <title>原型及原型链</title>
@@ -155,67 +212,6 @@
       </categories>
       <tags>
         <tag>原型</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>创建对象方式</title>
-    <url>/2018/07/06/%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<p>在 JavaScript 中创建对象的可行方法有哪些？</p>
-<h2 id="1、对象的构造函数"><a href="#1、对象的构造函数" class="headerlink" title="1、对象的构造函数"></a>1、对象的构造函数</h2><p>创建空对象的最简单方法是使用object构造函数，目前不推荐这种方法</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> object() <span class="comment">// 对象构造函数</span></span><br></pre></td></tr></table></figure>
-<h2 id="2、对象的创建方法："><a href="#2、对象的创建方法：" class="headerlink" title="2、对象的创建方法："></a>2、对象的创建方法：</h2><p>Object的create方法通过将原型对象作为参数传递来创建一个新对象</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = <span class="built_in">Object</span>.create(<span class="literal">null</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="3、对象字面量语法"><a href="#3、对象字面量语法" class="headerlink" title="3、对象字面量语法"></a>3、对象字面量语法</h2><p>当传递null作为参数时，对象字面量语法等效于create方法</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="4、函数构造器"><a href="#4、函数构造器" class="headerlink" title="4、函数构造器"></a>4、函数构造器</h2><p>创建任何函数并应用new运算符来创建对象实例</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line">    obj.name = name</span><br><span class="line">    <span class="keyword">return</span> obj</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> obj1 = <span class="keyword">new</span> Person(<span class="string">&quot;哈哈&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="5、带有原型的函数构造函数"><a href="#5、带有原型的函数构造函数" class="headerlink" title="5、带有原型的函数构造函数"></a>5、带有原型的函数构造函数</h2><p>这类似于函数构造函数，但它使用原型作为其属性和方法</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Person.prototype.name = <span class="string">&quot;哈哈&quot;</span></span><br><span class="line"><span class="keyword">var</span> obj = New Person()</span><br></pre></td></tr></table></figure>
-
-<h2 id="6、es6类语法"><a href="#6、es6类语法" class="headerlink" title="6、es6类语法"></a>6、es6类语法</h2><p>es6引入类特性来创建对象</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">construtor</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> object = <span class="keyword">new</span> Person(<span class="string">&quot;哈哈&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="7、单例模式"><a href="#7、单例模式" class="headerlink" title="7、单例模式"></a>7、单例模式</h2><p>Singleton是一个只能实例化一次的对象。对其构造函数的重复调用返回相同的实例，这样可以确保它们不会意外创建多个实例</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = <span class="string">&quot;哈哈&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>js基础</category>
-      </categories>
-      <tags>
-        <tag>object</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>作用域</title>
-    <url>/2018/07/06/%E4%BD%9C%E7%94%A8%E5%9F%9F/</url>
-    <content><![CDATA[<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><h3 id="什么是作用域？"><a href="#什么是作用域？" class="headerlink" title="什么是作用域？"></a>什么是作用域？</h3><p>作用域为可访问变量，对象，函数的集合。</p>
-<p>作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。</p>
-<p>在js中，变量的作用域分为全局作用域和局部作用域两种。<br>一个变量是全局作用域还是局部作用域，主要看变量声明的位置。</p>
-<h4 id="全局作用域："><a href="#全局作用域：" class="headerlink" title="全局作用域："></a>全局作用域：</h4><ol>
-<li>最外层函数和在最外层函数外面定义的变量</li>
-<li>没有通过关键字”var”声明的变量</li>
-<li>浏览器中，window对象的属性</li>
-</ol>
-<h4 id="局部作用域"><a href="#局部作用域" class="headerlink" title="局部作用域"></a>局部作用域</h4><ol>
-<li>在函数内部就是局部作用域，这个代码的名字只在函数的内部起作用</li>
-<li>调用函数时创建函数作用域，函数执行完毕之后，函数作用域销毁；</li>
-<li>每调用一次函数就会创建一个新的函数作用域，它们之间是相互独立的。<h3 id="作用域的目的"><a href="#作用域的目的" class="headerlink" title="作用域的目的"></a>作用域的目的</h3>是为了提高程序的可靠性，更重要的是减少命名冲突<h3 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h3>在js中，根据作用域的不同，变量可以分为两种：<strong>全局变量</strong>和<strong>局部变量</strong><h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4></li>
-</ol>
-<ul>
-<li>在全局作用域下声明的变量叫做全局变量</li>
-<li>全局变量在全局任何位置都可以使用，全局作用域中无法访问到局部作用域中的变量<h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4></li>
-<li>在局部作用域下声明的变量叫做局部变量</li>
-<li>局部变量只能在函数内部使用，在局部作用域中可以访问到全局变量</li>
-</ul>
-<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>在js代码运行中，所有用到的变量都需要去当前上下文环境中查找，当找不到的时候，就会继续查找上层的环境变量。<br>这样一级一级向上查找的过程，就组合成了一个作用域链。</p>
-<p>所以说，<strong>作用域链</strong>与一个<strong>执行上下文</strong>相关，是内部上下文所有变量对象（包含父变量对象）的列表，用于变量查询。</p>
-]]></content>
-      <categories>
-        <category>js基础</category>
-      </categories>
-      <tags>
-        <tag>object</tag>
       </tags>
   </entry>
 </search>
